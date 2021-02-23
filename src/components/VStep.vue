@@ -21,6 +21,8 @@
         <button @click.prevent="finish" v-if="isLast && isButtonEnabled('buttonStop')" class="v-step__button v-step__button-stop">{{ labels.buttonStop }}</button>
       </div>
     </slot>
+
+    <div class="v-step__arrow" :class="{ 'v-step__arrow--dark': step.header && step.header.title }"></div>
   </div>
 </template>
 
@@ -201,15 +203,15 @@ export default {
     z-index: 10000;
   }
 
-  .v-step .v-step__arrow {
-    width: 0;
-    height: 0;
-    border-style: solid;
+  .v-step .v-step__arrow, .v-step .v-step__arrow::before {
     position: absolute;
-    margin: 0.5rem;
+    width: 8px;
+    height: 8px;
+    background-attachment:  inherit;
   }
 
   .v-step .v-step__arrow {
+    visibility: hidden;
     border-color: #50596c; /* #ffc107, #35495e */
 
     &--dark {
@@ -217,19 +219,18 @@ export default {
     }
   }
 
+  .v-step .v-step__arrow::before {
+    visibility: visible;
+    content: '';
+    transform: rotate(45deg);
+  }
+
   .v-step[x-placement^="top"] {
     margin-bottom: 0.5rem;
   }
 
   .v-step[x-placement^="top"] .v-step__arrow {
-    border-width: 0.5rem 0.5rem 0 0.5rem;
-    border-left-color: transparent;
-    border-right-color: transparent;
-    border-bottom-color: transparent;
-    bottom: -0.5rem;
-    left: calc(50% - 1rem);
-    margin-top: 0;
-    margin-bottom: 0;
+    bottom: -4px;
   }
 
   .v-step[x-placement^="bottom"] {
@@ -237,14 +238,7 @@ export default {
   }
 
   .v-step[x-placement^="bottom"] .v-step__arrow {
-    border-width: 0 0.5rem 0.5rem 0.5rem;
-    border-left-color: transparent;
-    border-right-color: transparent;
-    border-top-color: transparent;
-    top: -0.5rem;
-    left: calc(50% - 1rem);
-    margin-top: 0;
-    margin-bottom: 0;
+    top: -4px;
   }
 
   .v-step[x-placement^="right"] {
@@ -252,14 +246,7 @@ export default {
   }
 
   .v-step[x-placement^="right"] .v-step__arrow {
-    border-width: 0.5rem 0.5rem 0.5rem 0;
-    border-left-color: transparent;
-    border-top-color: transparent;
-    border-bottom-color: transparent;
-    left: -0.5rem;
-    top: calc(50% - 1rem);
-    margin-left: 0;
-    margin-right: 0;
+    left: -4px;
   }
 
   .v-step[x-placement^="left"] {
@@ -267,14 +254,7 @@ export default {
   }
 
   .v-step[x-placement^="left"] .v-step__arrow {
-    border-width: 0.5rem 0 0.5rem 0.5rem;
-    border-top-color: transparent;
-    border-right-color: transparent;
-    border-bottom-color: transparent;
-    right: -0.5rem;
-    top: calc(50% - 1rem);
-    margin-left: 0;
-    margin-right: 0;
+    right: -4px;
   }
 
   /* Custom */
