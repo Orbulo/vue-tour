@@ -4,11 +4,11 @@
   "description": "Vue Tour is a lightweight, simple and customizable tour plugin for use with Vue.js. It provides a quick and easy way to guide your users through your application.",
   "author": "Pulsar <pulsar.dev.team@gmail.com>",
   "license": "MIT",
-  "main": "dist/vue-tour.common.js",
-  "module": "dist/vue-tour.umd.js",
+  "main": "dist/orbulo-vue-tour.common.js",
+  "module": "dist/orbulo-vue-tour.umd.js",
   "repository": {
     "type": "git",
-    "url": "https://github.com/pulsardev/vue-tour.git"
+    "url": "https://github.com/leonzalion/orbulo-vue-tour.git"
   },
   "typings": "types/index.d.ts",
   "keywords": [
