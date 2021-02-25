@@ -6,19 +6,19 @@
       </div>
     </slot>
 
-    <slot name="content">
-      <div class="v-step__content">
-        <div v-if="step.content" v-html="step.content"></div>
-        <div v-else>This is a demo step! The id of this step is {{ hash }} and it targets {{ step.target }}.</div>
-      </div>
-    </slot>
-
     <slot name="actions">
       <div class="v-step__buttons">
         <button @click.prevent="skip" v-if="!isLast && isButtonEnabled('buttonSkip')" class="v-step__button v-step__button-skip">{{ labels.buttonSkip }}</button>
         <button @click.prevent="previousStep" v-if="!isFirst && isButtonEnabled('buttonPrevious')" class="v-step__button v-step__button-previous">{{ labels.buttonPrevious }}</button>
         <button @click.prevent="nextStep" v-if="!isLast && isButtonEnabled('buttonNext')" class="v-step__button v-step__button-next">{{ labels.buttonNext }}</button>
         <button @click.prevent="finish" v-if="isLast && isButtonEnabled('buttonStop')" class="v-step__button v-step__button-stop">{{ labels.buttonStop }}</button>
+      </div>
+    </slot>
+
+    <slot name="content">
+      <div class="v-step__content">
+        <div v-if="step.content" v-html="step.content"></div>
+        <div v-else>This is a demo step! The id of this step is {{ hash }} and it targets {{ step.target }}.</div>
       </div>
     </slot>
 
